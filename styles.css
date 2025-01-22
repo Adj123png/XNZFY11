@@ -1,0 +1,61 @@
+/* 通用样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace; /* 像素风格字体 */
+  overflow: hidden;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cpath fill="%23ff6b6b" d="M0 0h8v8H0zm8 8h8v8H8z"/%3E') repeat;
+  background-size: 8px 8px;
+  animation: bgMove 6s infinite linear;
+}
+
+/* 动态背景动画 */
+@keyframes bgMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 16px 16px; }
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 4vw;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  text-shadow: 2px 2px 0 #FF6B6B, -2px -2px 0 #4ECDC4, -2px 2px 0 #FFA07A, 2px -2px 0 #FFFF66;
+}
+
+/* 像素风动态阴影 */
+h1::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  color: transparent;
+  text-shadow: 3px 3px 0 #ff6b6b, -3px -3px 0 #4ecdc4, -3px 3px 0 #ffa07a, 3px -3px 0 #ffff66;
+  animation: glitch 1.5s infinite alternate;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(2px, -2px); }
+}
+
+/* 烟花背景 */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
